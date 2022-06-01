@@ -13,14 +13,22 @@ export class AppComponent implements OnInit {
     this.displayValue(10,5,function (arg: any){
       console.log('call back function value is '+arg)
     });
-    // console.log(result);
     console.log(3);
+    this.anotherEgForCallbackFn(()=>{console.log('cb fn is called')})
   }
 
   displayValue(a: number, b: number,callbackfn:any){
     setTimeout(() =>{
       callbackfn (a + b);
       },1000
-    )
+    );
+  }
+
+  anotherEgForCallbackFn(cb:any){
+    setTimeout(()=>{
+      console.log('Asunc task');
+      cb();
+    },5000);
+  //  this cd() fn is called after 5sec asynchronously
   }
 }
